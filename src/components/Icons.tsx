@@ -16,7 +16,6 @@ import {
     Loader2,
     LogIn,
     LucideIcon,
-    LucideProps,
     MenuIcon,
     Moon,
     MoreVertical,
