@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GradientPicker } from "../custom/ColorPicker";
+import { ColorPicker } from "@/components/custom/ColorPicker";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -37,7 +37,7 @@ const SidebarAction: React.FC = () => {
       </div>
       <div className="space-y-2">
         <Label>Background Color</Label>
-        <GradientPicker
+        <ColorPicker
           className="w-full truncate"
           background={background}
           setBackground={handleChangeBackground}
