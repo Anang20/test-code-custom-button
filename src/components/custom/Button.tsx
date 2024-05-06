@@ -6,13 +6,15 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Icons } from "@/components/Icons";
-import { IconPositionType, SizeType, TooltipPositionType } from "@/types";
+import { IconPositionType, SizeType, TooltipPositionType, VariantType } from "@/types";
+import { cn } from "@/lib/utils";
 
 interface ButtonProps {
   label: string;
-  background?: string;
   icon?: string;
   iconPosition?: IconPositionType;
+  className?: string;
+  variant?: VariantType;
   style?: Object;
   size?: SizeType;
   disabled?: boolean;
@@ -24,8 +26,9 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({
   label,
-  background = "primary",
   style = {},
+  className,
+  variant = 'primary',
   icon,
   iconPosition = "left",
   size = "medium",
@@ -35,11 +38,12 @@ const Button: React.FC<ButtonProps> = ({
   tooltipPosition = "top",
   onClick,
 }) => {
+
   const buttonClasses = `
     text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
       disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
     }
-    ${`bg-${background}`}
+    ${variant === "primary" ? "bg-primary" : variant === "destructive" ? "bg-destructive" : "bg-background border border-bg-border text-black"}
     ${size === "small" ? "text-xs" : size === "large" ? "text-xl" : "text-base"}
     flex items-center justify-${
       icon
@@ -96,7 +100,7 @@ const Button: React.FC<ButtonProps> = ({
       ) : (
         <button
           style={style}
-          className={buttonClasses}
+          className={cn(buttonClasses, className)}
           disabled={disabled}
           onClick={onClick}
         >
